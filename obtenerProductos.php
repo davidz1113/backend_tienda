@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $body = json_decode(file_get_contents("php://input"), true);
 
-
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
