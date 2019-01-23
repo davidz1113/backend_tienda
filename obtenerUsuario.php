@@ -1,7 +1,7 @@
 <?php
 
 include './usuario.php';
-
+header('Access-Control-Allow-Origin: *');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 

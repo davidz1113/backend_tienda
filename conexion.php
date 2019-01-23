@@ -10,7 +10,7 @@
 
  */
 require_once '../backend_tienda/login_mysql.php';
-
+header('Access-Control-Allow-Origin: *');
 class Database {
     
     /**
