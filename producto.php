@@ -26,4 +26,23 @@ class Producto{
         }
     }
 
+    
+    public static function insertarActualizarProducto($arrayObjs) {
+        $sql = "insert into producto(idproducto,unidades) values ";
+        //rECORREMOS EL ARRAY Y SE ARMA LA CONSULTA INSERT POR CADA OBJETO
+    foreach ($arrayObjs as $obj) {
+            $sql = $sql . "(" . $obj["idproducto"] . "," . $obj["unidades"] . "),";
+        }
+        //aL FINAL SUBSTRAEMOS LA CADENA LA ULTIMA COMA Y LE AGREGAMOS UN PUNTO Y COMA AL FINAL
+        $sql = substr($sql, 0, -1) . " ON DUPLICATE KEY UPDATE unidades=VALUES(unidades);";
+        //echo $sql;
+        //return;
+         try {
+             $sentencia = Database::getInstance()->getDb()->prepare($sql);
+               return $sentencia->execute();
+             } catch (Exception $ex) {
+                 return false;
+         }
+    }
+
 }
